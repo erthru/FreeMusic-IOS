@@ -62,6 +62,10 @@ class MusicPlayer{
         }
     }
     
+    static func replay(){
+        play(index: current)
+    }
+    
     static func next(){
         if current == tracks.count - 1{
             play(index: current)
@@ -100,6 +104,28 @@ class MusicPlayer{
     
     static func setTrack(tracks:[Music]){
         self.tracks = tracks
+    }
+    
+    static func currentTime() -> Double{
+        if isPlaying(){
+            return CMTimeGetSeconds((avPlayer?.currentTime())!)
+        }else{
+            return 0
+        }
+    }
+    
+    static func duration() -> Double{
+        if isPlaying(){
+            return CMTimeGetSeconds((avPlayer?.currentItem?.asset.duration)!)
+        }else{
+            return 0
+        }
+    }
+    
+    static func seekTo(time: CMTime){
+        if isPlaying(){
+            avPlayer?.seek(to: time)
+        }
     }
     
 }

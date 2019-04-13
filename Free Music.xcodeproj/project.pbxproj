@@ -17,6 +17,7 @@
 		978F6F6822607E990048CD9E /* black_ops_one.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978F6F6722607E990048CD9E /* black_ops_one.ttf */; };
 		978F6F6B226088570048CD9E /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978F6F6A226088570048CD9E /* Music.swift */; };
 		978F6F6D226089010048CD9E /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978F6F6C226089010048CD9E /* MusicCell.swift */; };
+		97CE603322617EFE00D7344D /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE603222617EFE00D7344D /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		978F6F6722607E990048CD9E /* black_ops_one.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = black_ops_one.ttf; sourceTree = "<group>"; };
 		978F6F6A226088570048CD9E /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		978F6F6C226089010048CD9E /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		97CE603222617EFE00D7344D /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		A192CCE1ABA1E7C79282D695 /* Pods_Free_Music.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Music.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24D5616408D782C3C8FF007 /* Pods-Free Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Music.debug.xcconfig"; path = "Target Support Files/Pods-Free Music/Pods-Free Music.debug.xcconfig"; sourceTree = "<group>"; };
 		F6467AEEBCE64A5CF514ACED /* Pods-Free Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Music.release.xcconfig"; path = "Target Support Files/Pods-Free Music/Pods-Free Music.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				978F6F6622607E4E0048CD9E /* fonts */,
 				978F6F5422607B800048CD9E /* AppDelegate.swift */,
 				978F6F5622607B800048CD9E /* MainController.swift */,
+				97CE603222617EFE00D7344D /* DetailController.swift */,
 				978F6F6A226088570048CD9E /* Music.swift */,
 				978F6F6C226089010048CD9E /* MusicCell.swift */,
 				97592D142260BA390067CCF2 /* MusicPlayer.swift */,
@@ -237,6 +240,7 @@
 				978F6F5522607B800048CD9E /* AppDelegate.swift in Sources */,
 				978F6F6B226088570048CD9E /* Music.swift in Sources */,
 				97592D152260BA390067CCF2 /* MusicPlayer.swift in Sources */,
+				97CE603322617EFE00D7344D /* DetailController.swift in Sources */,
 				978F6F6D226089010048CD9E /* MusicCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import AVFoundation
 
 class MainController: UIViewController {
 
@@ -33,19 +34,25 @@ class MainController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setNeedsStatusBarAppearanceUpdate()
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if MusicPlayer.isPlaying() {
-            btnPlay.image = UIImage(named: "img_pause")
+        if MusicPlayer.player() != nil{
+            if MusicPlayer.isPlaying() {
+                btnPlay.image = UIImage(named: "img_pause")
+                lbTitleOnPlaying.text = MusicPlayer.getTitle()
+                lbArtistOnPlaying.text = MusicPlayer.getArtist()
+                imgOnPlaying.kf.setImage(with: URL(string: MusicPlayer.getArt()))
+            }else{
+                btnPlay.image = UIImage(named: "img_play")
+                lbTitleOnPlaying.text = MusicPlayer.getTitle()
+                lbArtistOnPlaying.text = MusicPlayer.getArtist()
+                imgOnPlaying.kf.setImage(with: URL(string: MusicPlayer.getArt()))
+            }
         }else{
-            btnPlay.image = UIImage(named: "img_play")
+            layoutOnPlaying.isHidden = true
         }
     }
     
@@ -54,6 +61,8 @@ class MainController: UIViewController {
         tableMusic.delegate = self
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("MUSIC"), object: nil, queue:nil, using:musicReceiver)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue:nil, using:avPlayerReceiver)
         
         let btnPlayTap = UITapGestureRecognizer(target: self, action: #selector(MainController.btnPlayTapped))
         btnPlay.isUserInteractionEnabled = true
@@ -67,6 +76,10 @@ class MainController: UIViewController {
         btnPrevious.isUserInteractionEnabled = true
         btnPrevious.addGestureRecognizer(btnPreviousTap)
         
+        let layoutOnPlayingTap = UITapGestureRecognizer(target: self, action: #selector(MainController.layoutOnPlayingTapped))
+        layoutOnPlaying.isUserInteractionEnabled = true
+        layoutOnPlaying.addGestureRecognizer(layoutOnPlayingTap)
+        
     }
     
     private func musicReceiver(notification:Notification) -> Void{
@@ -77,6 +90,16 @@ class MainController: UIViewController {
         lbArtistOnPlaying.text = MusicPlayer.getArtist()
         imgOnPlaying.kf.setImage(with: URL(string: MusicPlayer.getArt()))
         btnPlay.image = UIImage(named: "img_pause")
+    }
+    
+    private func avPlayerReceiver(notification:Notification) -> Void{
+        layoutOnPlaying.isHidden = true
+        MusicPlayer.stop()
+    }
+    
+    @objc
+    func layoutOnPlayingTapped(){
+        performSegue(withIdentifier: "MainToDetail", sender: self)
     }
     
     @objc
